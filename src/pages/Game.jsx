@@ -6,6 +6,7 @@ import { TrackData } from '../components';
 
 import * as api from '../api';
 import { TIMEOUT } from '../consts';
+import { addScoreToLeaderboard } from '../localStorageHelpers';
 
 const initTrack1and2 = (tracks, setSelected, setTrack1, setTrack2) => {
   setSelected(false);
@@ -37,16 +38,12 @@ const Game = () => {
     setScore(0);
     setSelected(false);
 
-    // api
-    //   .getTracksFromPlaylist(api.getPlaylistId(name))
-    //   .then(data => setTracks(data));
-
-    setTracks(api.getTracks('rock'));
+    setTracks(api.getTracks(name));
   }, [name]);
 
   useEffect(() => {
     if (tracks.length === 0) {
-      setTracks(api.getTracks('rock'));
+      setTracks(api.getTracks(name));
     }
 
     if (score === 0) {
@@ -55,7 +52,13 @@ const Game = () => {
       setTimeout(() => {
         initTrack1and2(tracks, setSelected, setTrack1, setTrack2);
       }, TIMEOUT);
-  }, [tracks, score]);
+  }, [tracks, score, name]);
+
+  useEffect(() => {
+    if (gameOver) {
+      if (score > 0) addScoreToLeaderboard(name, score);
+    }
+  }, [gameOver, name, score]);
 
   return (
     <Box>
@@ -72,10 +75,11 @@ const Game = () => {
         textAlign="center"
         pos="absolute"
         top="1rem"
-        left="50%"
-        ml="-1.5rem"
+        right="2rem"
+        ml="-2rem"
+        fontSize="2xl"
       >
-        Score: {score}
+        Score: <b> {score} </b>
       </Text>
 
       {!gameOver ? (

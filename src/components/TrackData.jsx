@@ -14,6 +14,17 @@ const TrackData = props => {
     setSelected,
   } = props;
 
+  let [artist, track] = trackName
+    ? trackName.split('-')
+    : [undefined, undefined];
+
+  if (trackName) {
+    if (!trackName.includes('-')) {
+      [artist, track] = trackName.split(':');
+    } else {
+    }
+  }
+
   return (
     <Flex
       w="50vw"
@@ -42,11 +53,15 @@ const TrackData = props => {
         boxShadow=".4rem .4rem .8rem 0rem rgba(34, 60, 80, 0.4)"
         aspectRatio="16/9"
       ></Image>
+
       <Box direction="column" textAlign="center">
-        <Text fontSize="xl">{trackName}</Text>
+        <Text fontSize="4xl" fontWeight="700">
+          {artist}
+        </Text>
+        <Text fontSize="2xl">{track}</Text>
         {/* <Text fontSize="3xl">{streams}</Text> */}
         {selected ? (
-          <Text fontSize="3xl" color={moreStreams ? 'green.300' : 'red.300'}>
+          <Text fontSize="4xl" color={moreStreams ? 'green.300' : 'red.300'}>
             {streams.toLocaleString('ru')}
           </Text>
         ) : null}
