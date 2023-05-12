@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/streams-guesser/static/js/main.f1fc6b3b.js",
+    "index.html": "/streams-guesser/index.html",
+    "main.f1fc6b3b.js.map": "/streams-guesser/static/js/main.f1fc6b3b.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f1fc6b3b.js"
+  ]
+}
