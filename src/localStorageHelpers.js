@@ -8,8 +8,6 @@ const getLocalData = () => {
 };
 
 const addScoreToLeaderboard = (category, score) => {
-  console.log(category);
-
   let leaderboard = getLocalData();
   if (leaderboard) {
     let foundKey = false;
@@ -29,8 +27,9 @@ const addScoreToLeaderboard = (category, score) => {
 
     localStorage.setItem(LOCALSTORAGE_ITEM_NAME, JSON.stringify(leaderboard));
   } else {
-    const elem = { category: score };
-    localStorage.setItem(LOCALSTORAGE_ITEM_NAME, JSON.stringify(elem));
+    let leaderboard = {};
+    leaderboard[category] = score;
+    localStorage.setItem(LOCALSTORAGE_ITEM_NAME, JSON.stringify(leaderboard));
   }
 };
 

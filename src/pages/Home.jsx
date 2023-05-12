@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <Flex h="100vh" align="center" justify="center" p="2rem" direction="column">
       <Center pb="2rem" fontSize="6xl">
-        <Heading>Streams Guesser v0.1</Heading>
+        <Heading>Streams Guesser v0.2</Heading>
       </Center>
 
       <SimpleGrid spacing="1rem" columns="4" mb="4rem">
@@ -56,11 +56,11 @@ const Home = () => {
           description="Bee Gees to Spice Girls"
         ></HomeCard>
 
-        {/* <HomeCard
-          category="Pop 90's classics"
-          categoryForURL="90pop"
+        <HomeCard
+          category={humanizeCategory('2000hits')}
+          categoryForURL="2000hits"
           description="No comments"
-        ></HomeCard> */}
+        ></HomeCard>
       </SimpleGrid>
 
       <Box>
