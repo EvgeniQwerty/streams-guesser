@@ -31,7 +31,7 @@ const Home = () => {
         <Heading>Streams Guesser v0.2</Heading>
       </Center>
 
-      <SimpleGrid spacing="1rem" columns="4" mb="4rem">
+      <SimpleGrid spacing="1rem" columns="5" mb="4rem">
         <HomeCard
           category={humanizeCategory('rock')}
           categoryForURL="rock"
@@ -59,12 +59,20 @@ const Home = () => {
         <HomeCard
           category={humanizeCategory('2000hits')}
           categoryForURL="2000hits"
-          description="No comments"
+          description="From RHCP to Lady Gaga"
+        ></HomeCard>
+
+        <HomeCard
+          category={humanizeCategory('rap')}
+          categoryForURL="rap"
+          description="From Juice Wrld to Outkast"
         ></HomeCard>
       </SimpleGrid>
 
       <Box>
-        <Heading mb="1rem">Leaderboard</Heading>
+        <Heading mb="1rem" textAlign="center">
+          Leaderboard
+        </Heading>
         <Table>
           <Thead>
             <Tr>

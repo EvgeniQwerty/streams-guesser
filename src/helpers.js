@@ -21,7 +21,10 @@ const prettyTitle = title => {
     .replace('[HD]', '')
     .replace('[OFFICIAL VIDEO]', '')
     .replace('(Official 4K Video)', '')
-    .replace('(Official Lyric Video)', '');
+    .replace('(Official Lyric Video)', '')
+    .replace('(Lyrics)', '')
+    .replace('[Lyrics]', '')
+    .replace('Lyrics', '');
 };
 
 const humanizeCategory = category => {
@@ -36,6 +39,8 @@ const humanizeCategory = category => {
       return "70-90's Hits";
     case '2000hits':
       return "2000's Hits";
+    case 'rap':
+      return 'Rap Hits';
   }
 };
 
