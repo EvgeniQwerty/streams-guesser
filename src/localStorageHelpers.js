@@ -7,21 +7,27 @@ const getLocalData = () => {
   return leaderboard;
 };
 
-const addScoreToLeaderboard = (category, score) => {
+const addScoreToLeaderboard = (category = '', score = 0) => {
   let leaderboard = getLocalData();
   if (leaderboard) {
     let foundKey = false;
     for (let key in leaderboard) {
+      console.log(key, category);
+
       if (key === category) {
+        foundKey = true;
         if (leaderboard[key] < score) {
+          console.log(leaderboard[key], score);
+
           leaderboard[key] = score;
-          foundKey = true;
           break;
         }
       }
     }
 
     if (!foundKey) {
+      console.log(category, leaderboard[category], score);
+
       leaderboard[category] = score;
     }
 

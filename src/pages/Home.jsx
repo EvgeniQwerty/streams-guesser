@@ -12,6 +12,7 @@ import {
   Tr,
   Th,
   Td,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import * as api from '../api';
 import { HomeCard } from '../components/HomeCard';
@@ -19,6 +20,11 @@ import { getLocalData } from '../localStorageHelpers';
 import { humanizeCategory } from '../helpers';
 
 const Home = () => {
+  const [isLargerThan1200] = useMediaQuery('(min-width: 1200px)');
+  const [isLargerThan1000] = useMediaQuery('(min-width: 1000px)');
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
+  const [isLargerThan450] = useMediaQuery('(min-width: 450px)');
+
   const leaderboard = getLocalData();
   let keys = undefined;
   if (leaderboard) {
@@ -26,12 +32,30 @@ const Home = () => {
   }
 
   return (
-    <Flex h="100vh" align="center" justify="center" p="2rem" direction="column">
+    <Flex
+      justify="center"
+      p={isLargerThan800 ? '10rem' : '2rem'}
+      direction="column"
+    >
       <Center pb="2rem" fontSize="6xl">
         <Heading>Streams Guesser v0.2</Heading>
       </Center>
 
-      <SimpleGrid spacing="1rem" columns="5" mb="4rem">
+      <SimpleGrid
+        spacing="1rem"
+        columns={
+          isLargerThan1200
+            ? '5'
+            : isLargerThan1000
+            ? '4'
+            : isLargerThan800
+            ? '3'
+            : isLargerThan450
+            ? '2'
+            : '1'
+        }
+        mb="4rem"
+      >
         <HomeCard
           category={humanizeCategory('rock')}
           categoryForURL="rock"
@@ -43,12 +67,6 @@ const Home = () => {
           categoryForURL="2000alt"
           description="Nickelback to Coldplay"
         ></HomeCard>
-
-        {/* <HomeCard
-          category="Techno Classics"
-          categoryForURL="techno"
-          description="No comments"
-        ></HomeCard> */}
 
         <HomeCard
           category={humanizeCategory('7090hits')}
@@ -73,24 +91,26 @@ const Home = () => {
         <Heading mb="1rem" textAlign="center">
           Leaderboard
         </Heading>
-        <Table>
-          <Thead>
-            <Tr>
-              <Th>Category</Th>
-              <Th>Score</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {leaderboard
-              ? keys.map(key => (
-                  <Tr>
-                    <Td>{humanizeCategory(key)}</Td>{' '}
-                    <Td isNumeric>{leaderboard[key]}</Td>
-                  </Tr>
-                ))
-              : null}
-          </Tbody>
-        </Table>
+        <Box width={isLargerThan450 ? '75%' : '100%'} m="auto">
+          <Table>
+            <Thead>
+              <Tr>
+                <Th>Category</Th>
+                <Th>Score</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {leaderboard
+                ? keys.map(key => (
+                    <Tr>
+                      <Td>{humanizeCategory(key)}</Td>{' '}
+                      <Td isNumeric>{leaderboard[key]}</Td>
+                    </Tr>
+                  ))
+                : null}
+            </Tbody>
+          </Table>
+        </Box>
       </Box>
 
       <Box mt="2rem" display="none">

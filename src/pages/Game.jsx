@@ -1,5 +1,12 @@
 import { ArrowBackIcon } from '@chakra-ui/icons';
-import { Button, Box, Flex, Text, Heading } from '@chakra-ui/react';
+import {
+  Button,
+  Box,
+  Flex,
+  Text,
+  Heading,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { TrackData } from '../components';
@@ -32,6 +39,8 @@ const Game = () => {
 
   const { name } = useParams();
   const navigate = useNavigate();
+
+  const [isLargerThan800] = useMediaQuery('(min-width: 800px)');
 
   useEffect(() => {
     setGameOver(false);
@@ -83,7 +92,12 @@ const Game = () => {
       </Text>
 
       {!gameOver ? (
-        <Flex align="center" justify="center" h="100vh">
+        <Flex
+          align="center"
+          justify="center"
+          h="100vh"
+          direction={isLargerThan800 ? 'row' : 'column'}
+        >
           <TrackData
             trackName={track1?.trackName}
             trackImg={track1?.trackImg}
