@@ -35,7 +35,7 @@ const TrackData = props => {
       h={isLargerThan800 ? '100vh' : '50vh'}
       direction="column"
       align="center"
-      justify="center"
+      justify={isLargerThan800 ? 'center' : 'flex-end'}
       _hover={{ bg: 'rgba(128, 128, 128, 0.2)' }}
       transition=".3s all"
       onClick={() => {
@@ -56,6 +56,8 @@ const TrackData = props => {
         w={isLargerThan800 ? '45vw' : isLargerThan550 ? '65vw' : '75vw'}
         boxShadow=".4rem .4rem .8rem 0rem rgba(34, 60, 80, 0.4)"
         aspectRatio="16/9"
+        opacity={selected ? '0' : '100'}
+        transition="1.5s all"
       ></Image>
 
       <Box direction="column" textAlign="center">
@@ -63,12 +65,14 @@ const TrackData = props => {
           {artist}
         </Text>
         <Text fontSize={isLargerThan1000 ? '2xl' : 'xl'}>{track}</Text>
-        {/* <Text fontSize="3xl">{streams}</Text> */}
-        {selected ? (
-          <Text fontSize="4xl" color={moreStreams ? 'green.300' : 'red.300'}>
-            {streams.toLocaleString('ru')}
-          </Text>
-        ) : null}
+        <Text
+          fontSize="4xl"
+          color={moreStreams ? 'green.300' : 'red.300'}
+          opacity={selected ? '100' : '0'}
+          transition=".5s all"
+        >
+          {streams?.toLocaleString('ru')}
+        </Text>
       </Box>
     </Flex>
   );

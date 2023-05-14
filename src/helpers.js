@@ -24,7 +24,14 @@ const prettyTitle = title => {
     .replace('(Official Lyric Video)', '')
     .replace('(Lyrics)', '')
     .replace('[Lyrics]', '')
-    .replace('Lyrics', '');
+    .replace('Lyrics', '')
+    .replace('(Full HD)', '')
+    .replace('[Full HD]', '')
+    .replace('Full HD', '')
+    .replace('(1080p)', '')
+    .replace('[1080p]', '')
+    .replace('1080p', '')
+    .replace('|', '');
 };
 
 const humanizeCategory = category => {

@@ -122,7 +122,14 @@ const Game = () => {
           />
         </Flex>
       ) : (
-        <Flex align="center" justify="center" h="100vh" direction="column">
+        <Flex
+          align="center"
+          justify="center"
+          h="100vh"
+          direction="column"
+          opacity={gameOver ? '100' : '0'}
+          transition=".5s all"
+        >
           <Heading size="4xl" mb="1rem">
             Game over!
           </Heading>
