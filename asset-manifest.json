@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/streams-guesser/static/js/main.c7e90caf.js",
+    "main.js": "/streams-guesser/static/js/main.c83ab403.js",
     "index.html": "/streams-guesser/index.html",
-    "main.c7e90caf.js.map": "/streams-guesser/static/js/main.c7e90caf.js.map"
+    "main.c83ab403.js.map": "/streams-guesser/static/js/main.c83ab403.js.map"
   },
   "entrypoints": [
-    "static/js/main.c7e90caf.js"
+    "static/js/main.c83ab403.js"
   ]
 }
