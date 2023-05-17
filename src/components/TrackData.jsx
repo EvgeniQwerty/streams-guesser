@@ -53,7 +53,7 @@ const TrackData = props => {
         src={trackImg}
         alt={trackName}
         objectFit="cover"
-        w={isLargerThan800 ? '45vw' : isLargerThan550 ? '65vw' : '75vw'}
+        w={isLargerThan800 ? '45vw' : isLargerThan550 ? '50vw' : '75vw'}
         boxShadow=".4rem .4rem .8rem 0rem rgba(34, 60, 80, 0.4)"
         aspectRatio="16/9"
         opacity={selected ? '0' : '100'}

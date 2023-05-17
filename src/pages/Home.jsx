@@ -91,7 +91,20 @@ const Home = () => {
         <Heading mb="1rem" textAlign="center">
           Leaderboard
         </Heading>
-        <Box width={isLargerThan450 ? '75%' : '100%'} m="auto">
+        <Box
+          width={
+            isLargerThan1200
+              ? '40%'
+              : isLargerThan1000
+              ? '50%'
+              : isLargerThan800
+              ? '60%'
+              : isLargerThan450
+              ? '75%'
+              : '100%'
+          }
+          m="auto"
+        >
           <Table>
             <Thead>
               <Tr>
