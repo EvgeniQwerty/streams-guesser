@@ -58,16 +58,16 @@ const getTracksFromPlaylist = async (playlistId = '') => {
   return finalData;
 };
 
-const getRandomVideoFromPlaylist = async (videoIds = []) => {
+const getRandomVideoId = (videoIds = []) => {
+  return videoIds[getRandomInt(videoIds.length)];
+};
+
+const getVideoData = async (id = '') => {
   let finalData = {};
   let res = [];
-  const id = videoIds[getRandomInt(videoIds.length)];
-  console.log(id);
   res = await getDataFromYoutube(id);
   finalData = await res[0];
-
   console.log(finalData);
-
   return finalData;
 };
 // async
@@ -1063,6 +1063,7 @@ const getTracks = (style = '') => {
 export {
   getDataFromYoutube,
   getTracksFromPlaylist,
-  getRandomVideoFromPlaylist,
+  getRandomVideoId,
+  getVideoData,
   getTracks,
 };

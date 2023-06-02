@@ -57,7 +57,7 @@ const TrackData = props => {
         boxShadow=".4rem .4rem .8rem 0rem rgba(34, 60, 80, 0.4)"
         aspectRatio="16/9"
         opacity={selected ? '0' : '100'}
-        transition="1.5s all"
+        transition=".8s all"
       ></Image>
 
       <Box direction="column" textAlign="center">
@@ -69,10 +69,19 @@ const TrackData = props => {
           fontSize="4xl"
           color={moreStreams ? 'green.300' : 'red.300'}
           opacity={selected ? '100' : '0'}
-          transition=".5s all"
+          transition=".3s all"
         >
           {streams?.toLocaleString('ru')}
         </Text>
+
+        <Text
+          fontSize="4xl"
+          color={moreStreams ? 'green.300' : 'red.300'}
+          transition=".3s all"
+        >
+          {streams?.toLocaleString('ru')}
+        </Text>
+
       </Box>
     </Flex>
   );

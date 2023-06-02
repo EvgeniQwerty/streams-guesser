@@ -19,12 +19,20 @@ const initTrack1and2 = (tracks, setSelected, setTrack1, setTrack2) => {
   setSelected(false);
 
   if (tracks.length > 0) {
-    api.getRandomVideoFromPlaylist(tracks).then(data => {
-      setTrack1(data);
+    let id1 = api.getRandomVideoId(tracks);
+    console.log(id1);
+    let id2 = api.getRandomVideoId(tracks);
+    while (id1 === id2) id2 = api.getRandomVideoId(tracks);
+    console.log(id2);
+
+    api.getVideoData(id1).then(data => {
+      if (!!!data) initTrack1and2(tracks, setSelected, setTrack1, setTrack2);
+      else setTrack1(data);
     });
 
-    api.getRandomVideoFromPlaylist(tracks).then(data => {
-      setTrack2(data);
+    api.getVideoData(id2).then(data => {
+      if (!!!data) initTrack1and2(tracks, setSelected, setTrack1, setTrack2);
+      else setTrack2(data);
     });
   }
 };
